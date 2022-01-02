@@ -60,8 +60,8 @@ params:
     hiddenInSingle: true # hide on single page
 
   editPost:
-    URL: "https://github.com/Wonderfall/wonderfall.github.io/content"
-    Text: "Suggest Changes" # edit text
+    URL: "https://github.com/Wonderfall/wonderfall.github.io/blob/main/content"
+    Text: "Source code" # edit text
     appendFilePath: true # to append file path to Edit link
 
 menu:
