@@ -9,7 +9,7 @@ buildFuture: false
 buildExpired: false
 
 permalinks:
-  posts: "/:title"
+  posts: "/:filename"
 
 minify:
   disableXML: true
