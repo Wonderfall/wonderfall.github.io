@@ -1,0 +1,73 @@
+baseURL: "https://wonderfall.github.io/"
+languageCode: en-us
+title: "Wonder's Lab"
+theme: PaperMod
+
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+minify:
+  disableXML: true
+  minifyOutput: true
+
+params:
+  env: production
+  title: "Wonder's Lab"
+  description: "Thoughts and research on security, privacy and pharmacology."
+  keywords: [Blog, Research, Security, Privacy]
+  author: Wonderfall
+  DateFormat: "January 2, 2006"
+  defaultTheme: auto # dark, light
+  disableThemeToggle: false
+
+  ShowReadingTime: true
+  ShowShareButtons: true
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: false
+  disableSpecial1stPost: false
+  disableScrollToTop: false
+  comments: false
+  hidemeta: false
+  hideSummary: false
+  showtoc: false
+  tocopen: false
+
+  homeInfoParams:
+    Title: "Hi there. I'm a bug on the Internet."
+    Content: Thoughts and research on security, privacy, and pharmacology.
+
+  socialIcons:
+    - name: twitter
+      url: "https://twitter.com/w0nderfall"
+    - name: mastodon
+      url: "https://sheikah.online"
+    - name: matrix
+      url: "https://matrix.to/#/@wonderfall:targaryen.house"
+    - name: github
+      url: "https://github.com/Wonderfall"
+    - name: rss
+      url: /index.xml
+
+  cover:
+    hidden: true # hide everywhere but not in structured data
+    hiddenInList: true # hide on list pages and home
+    hiddenInSingle: true # hide on single page
+
+  editPost:
+    URL: "https://github.com/Wonderfall/wonderfall.github.io/content"
+    Text: "Suggest Changes" # edit text
+    appendFilePath: true # to append file path to Edit link
+
+menu:
+  main:
+    - identifier: tags
+      name: tags
+      url: /tags/
+      weight: 10
+    - identifier: french
+      name: french blog
+      url: https://wonderfall.space
+      weight: 99
