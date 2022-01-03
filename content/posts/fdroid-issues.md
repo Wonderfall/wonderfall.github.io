@@ -85,6 +85,8 @@ It is an important security feature that is also straightforward to implement. S
 
 F-Droid also has a problem regarding the adoption of **[new signature schemes](https://source.android.com/security/apksigning)** as they [held out on the v1 signature scheme](https://forum.f-droid.org/t/why-f-droid-is-still-using-apk-signature-scheme-v1/10602) (which was [horrible](https://www.xda-developers.com/janus-vulnerability-android-apps/) and deprecated since 2017) until they were forced by Android 11 requirements to support the newer v2/v3 schemes. Quite frankly, this is straight-up bad.
 
+For some reason, their website has always been hosting an [outdated APK of F-Droid](https://forum.f-droid.org/t/why-does-the-f-droid-website-nearly-always-host-an-outdated-f-droid-apk/6234), and this is still the case today. "Stability" seems to be the main reason mentioned, which doesn't make sense.
+
 Finally, F-Droid shows a list of the [low-level permissions](https://developer.android.com/reference/android/Manifest.permission) for each app: these low-level permissions are usually grouped in the standard high-level permissions and special toggles that are explicitly based on a type of sensitive data. While showing a list of low-level permissions could be useful information for a developer, it's often a misguided and inaccurate approach for the end-user. Apps have to [request the standard permissions at runtime](https://developer.android.com/guide/topics/permissions/overview#runtime) and do not get them simply by being installed, so knowing all the "under the hood" permissions is not useful and makes the permission model unnecessarily confusing.
 
 ## Conclusion: what should you do?
