@@ -60,6 +60,29 @@ The F-Droid client allows multiple repositories to coexist within the same app. 
 
 Their client also lacks **TLS certificate pinning**, unlike Play Store which does that for all connections to Google. Certificate pinning is a way for apps to increase the security of their connection to services [by providing the hashes](https://developer.android.com/training/articles/security-config#CertificatePinning) of known-good certificates for these services instead of trusting pre-installed CAs. This can avoid some cases where an interception (*man-in-the-middle* attack) could be possible and lead to various security issues considering you're trusting the app to deliver you other apps. It is an important security feature.
 
+See how GrapheneOS pins both root and CA certificates in [Auditor](https://github.com/GrapheneOS/Auditor) for their attestation service:
+
+```
+<!-- res/xml/network_security_config.xml -->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false"/>
+    <domain-config>
+        <domain includeSubdomains="true">attestation.app</domain>
+        <pin-set>
+            <!-- ISRG Root X1 -->
+            <pin digest="SHA-256">C5+lpZ7tcVwmwQIMcRtPbsQtWLABXhQzejna0wHFr8M=</pin>
+            <!-- ISRG Root X2 -->
+            <pin digest="SHA-256">diGVwiVYbubAI3RW4hB9xU8e/CH2GnkuvVFZE8zmgzI=</pin>
+            <!-- Let's Encrypt R3 -->
+            <pin digest="SHA-256">jQJTbIh0grw0/1TkHSumWb+Fs0Ggogr621gT3PvPKG0=</pin>
+            <!-- Let's Encrypt E1 -->
+            <pin digest="SHA-256">J2/oqMTsdhFWW/n85tys6b4yDBtb6idZayIEBx7QTxA=</pin>
+            ...
+        </pin-set>
+    </domain-config>
+</network-security-config>
+```
+
 F-Droid also has a problem regarding the adoption of **[new signature schemes](https://source.android.com/security/apksigning)** as they [held out on the v1 signature scheme](https://forum.f-droid.org/t/why-f-droid-is-still-using-apk-signature-scheme-v1/10602) (which was [horrible](https://www.xda-developers.com/janus-vulnerability-android-apps/) and deprecated since 2017) until they were forced by Android 11 requirements to support the newer v2/v3 schemes. Quite frankly, this is straight-up bad.
 
 Finally, F-Droid shows a list of the [low-level permissions](https://developer.android.com/reference/android/Manifest.permission) for each app: these low-level permissions are usually grouped in the standard high-level permissions and special toggles that are explicitly based on a type of sensitive data. While showing a list of low-level permissions could be useful information for a developer, it's often a misguided and inaccurate approach for the end-user. Apps have to [request the standard permissions at runtime](https://developer.android.com/guide/topics/permissions/overview#runtime) and do not get them simply by being installed, so knowing all the "under the hood" permissions is not useful and makes the permission model unnecessarily confusing.
