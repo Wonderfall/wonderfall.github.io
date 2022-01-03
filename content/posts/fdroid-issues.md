@@ -16,7 +16,7 @@ Before we start, a few things to keep in mind:
 ## 1. The trusted party problem
 To understand why this is a problem, you'll have to understand a bit about F-Droid's architecture, the things it does very differently from other app repositories, and the [Android platform security model](https://arxiv.org/pdf/1904.05572.pdf).
 
-Unlike other repositories, F-Droid signs all the apps (at least in its main repository, we'll get back to it later) with app keys it always owns. A signature is a mathematical scheme that guarantees the authenticity of the applications you download. Upon the installation of an app, Android pins the signature across the entire OS (including user profiles): that's what we call a trust-on-first-use model since all subsequent updates of the app must have the corresponding signature to be installed.
+Unlike other repositories, F-Droid signs all the apps (at least in its main repository, we'll get back to it later) with app keys it always owns. A signature is a mathematical scheme that guarantees the authenticity of the applications you download. Upon the installation of an app, Android pins the signature across the entire OS (including user profiles): that's what we call a *trust-on-first-use* model since all subsequent updates of the app must have the corresponding signature to be installed.
 
 Normally, the developer is supposed to sign their own app prior to its upload on a distribution channel, whether that is a website or a traditional repository (or both). You don't have to trust the source (usually recommended by the developer) except for the first installation: future updates will have their authenticity cryptographically guaranteed. The issue with F-Droid is that all apps are signed by the same party (F-Droid) which is also not the developer. You're now adding another party you'll have to trust, which isn't ideal: **the fewer parties, the better**.
 
@@ -30,7 +30,7 @@ Not only do F-Droid require specific changes for the app to comply with its incl
 Considering all this, and the fact that their build process is often broken using outdated tools, you have to expect **far slower updates** compared to a traditional distribution system. Slow updates mean that you will be exposed to security vulnerabilities more often than you should've been. It would be unwise to have a full browser updated through the F-Droid official repository, for instance.
 
 ## 3. Low target API level (SDK) for client & apps
-SDK stands for Software Development Kit and is the collection of software to build apps for a given platform. On Android, a higher SDK level means you'll be able to make use of modern APIs, whose iterations bring **security and privacy improvements**. For instance, API level 31 makes use of all these improvements on Android 12.
+SDK stands for *Software Development Kit* and is the collection of software to build apps for a given platform. On Android, a higher SDK level means you'll be able to make use of modern APIs, whose iterations bring **security and privacy improvements**. For instance, API level 31 makes use of all these improvements on Android 12.
 
 As you may already know, Android has a strong sandboxing model where each application is sandboxed. You could say that an app compiled with the highest API level benefits from all the latest improvements brought to the app sandbox; as opposed to outdated apps with older API levels, which have a weaker sandbox.
 
