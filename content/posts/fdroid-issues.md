@@ -34,7 +34,7 @@ Considering all this, and the fact that their build process is often broken usin
 ## 3. Low target API level (SDK) for client & apps
 SDK stands for *Software Development Kit* and is the collection of software to build apps for a given platform. On Android, a higher SDK level means you'll be able to make use of modern API levels of which each iteration brings **security and privacy improvements**. For instance, API level 31 makes use of all these improvements on Android 12.
 
-As you may already know, Android has a strong sandboxing model where each application is sandboxed. You could say that an app compiled with the highest API level benefits from all the latest improvements brought to the app sandbox; as opposed to outdated apps with older API levels, which have a **weaker sandbox**.
+As you may already know, Android has a strong sandboxing model where each application is sandboxed. You could say that an app compiled with the highest API level benefits from all the latest improvements brought to the app sandbox; as opposed to outdated apps compiled with older API levels, which have a **weaker sandbox**.
 
 ```
 # b/35917228 - /proc/misc access
