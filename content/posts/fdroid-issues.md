@@ -9,7 +9,7 @@ Many of us in GrapheneOS community channels suggest avoiding F-Droid, the altern
 
 Before we start, a few things to keep in mind:
 
-- The main goal of this write-up was to inform users so they can make responsible choices, not to trash someone else's work. I have respect for any work done in the name of good intentions. Please don't misinterpret this article's intention.
+- The main goal of this write-up was to inform users so they can make responsible choices, not to trash someone else's work. I have respect for any work done in the name of good intentions. Likewise, please don't misinterpret the intentions of this article.
 - You have your own reasons for using open-source or free/libre/whatever software which won't be discussed here. Beware though that open-source does not equal security and may sometimes be the perfect Trojan Horse for bad practices as well as exploits. It's just a development model like any other.
 - A lot of information in this article is sourced from official and trusted sources, but you're welcome to do your own research. As the author of this article, I'm only interested in facts and not ideologies.
 
