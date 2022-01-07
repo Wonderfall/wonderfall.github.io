@@ -92,9 +92,25 @@ For some reason, their website has always been hosting an [outdated APK of F-Dro
 Finally, F-Droid shows a list of the [low-level permissions](https://developer.android.com/reference/android/Manifest.permission) for each app: these low-level permissions are usually grouped in the standard high-level permissions and special toggles that are explicitly based on a type of sensitive data. While showing a list of low-level permissions could be useful information for a developer, it's often a misguided and inaccurate approach for the end-user. Apps have to [request the standard permissions at runtime](https://developer.android.com/guide/topics/permissions/overview#runtime) and do not get them simply by being installed, so knowing all the "under the hood" permissions is not useful and makes the permission model unnecessarily confusing.
 
 ## Conclusion: what should you do?
-F-Droid **weakens the security model of Android substantially** for all of the reasons above. If security matters to you, it should not be used. If you don't care or if you'll use it knowingly, then it's up to you. While they could make some easy improvements, I don't think F-Droid is in an ideal situation to solve all of these issues because some of them are **inherent flaws** in their architecture. That being said, I can only wish for them to improve.
+F-Droid **weakens the security model of Android substantially** for all of the reasons above. While they could easily make some improvements, I don't think F-Droid is in an ideal situation to solve all of these issues because some of them are **inherent flaws** in their architecture. That being said, I can only wish for them to improve.
 
 F-Droid is not the only way to get and support open-source apps. Sure, it can help you in finding one that you wouldn't have known existed otherwise. Many developers also publish their FOSS apps on the **Play Store** or their website directly. Most of the time, releases are available on **GitHub**, which is great since each GitHub releases page has an Atom feed. Nonetheless, I'd still recommend using **Play Store for top-notch security** as it does additional checks, and it is even perfectly usable on GrapheneOS with their [sandboxed Play services](https://grapheneos.org/usage#sandboxed-play-services) compatibility layer.
+
+> Should I really care?
+
+If security (and privacy, as they overlap) matters to you, F-Droid should not be used. If you don't care or if you'll use it knowingly, then it's up to your threat model.
+
+> But there are more malware in Play Store! How can you say that it's more secure?
+
+It doesn't matter as you shouldn't really rely on any quality control to be the sole guarantee that a software is free of malicious or exploitable code. Play Store and even the Apple App Store may have a considerable amount of malware because a full reverse-engineering of any uploaded app isn't feasible realistically. However, they fulfill their role quite well, and that is all that is expected of them.
+
+> Aren't open-source apps more secure? Doesn't it make F-Droid safer?
+
+You can still find and get your open-source apps elsewhere. And no, open-source apps aren't necessarily more private or secure. Instead, you should rely on the strong security and privacy guarantees provided by a modern operating system with **a robust sandboxing/permission model**, namely modern Android, GrapheneOS and iOS. Pay close attention to the permissions you grant, and avoid legacy apps as they could require invasive permissions to run.
+
+> Isn't Google evil? Isn't Play Store spyware?
+
+Some people tend to exaggerate the importance of Google in their threat model, at the cost of pragmatism and security/privacy good practices. Play Store isn't spyware and can run unprivileged like it does on GrapheneOS (including unattended updates). Unprivileged apps have always had the ability to [query installed packages](https://developer.android.com/training/package-visibility) on a given user profile.
 
 If you don't have Play services installed, you can use a third-party Play Store client called **[Aurora Store](https://auroraoss.com/)**. Aurora Store has some issues of its own, and some of them overlap in fact with F-Droid. Aurora Store somehow still requires [the legacy storage permission](https://gitlab.com/AuroraOSS/AuroraStore/-/blob/26f5d4fd558263a89baee4c3cbe1d220913da104/app/src/main/AndroidManifest.xml#L28-32), has yet to [implement certificate pinning](https://gitlab.com/AuroraOSS/AuroraStore/-/issues/697), has been known to sometimes retrieve wrong versions of apps, and [distributed account tokens](https://gitlab.com/AuroraOSS/AuroraStore/-/issues/722) over [cleartext HTTP](https://gitlab.com/AuroraOSS/AuroraStore/-/issues/734) until fairly recently; not that it matters much since tokens were designed to be shared between users, which is already concerning. I'd recommend against using the shared "anonymous" accounts feature: you should make your own throwaway account with minimal information.
 
