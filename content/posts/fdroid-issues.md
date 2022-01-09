@@ -5,7 +5,7 @@ draft: false
 tags: ['security', 'android']
 ---
 
-Many of us in GrapheneOS community channels suggest avoiding F-Droid, the alternative app repository dedicated to free and open-source software. We don't strictly oppose its use nor are we against the usage of free software, but we often emphasize major issues specifically with F-Droid that can harm the security of your device and the FOSS app ecosystem.
+F-Droid is a popular alternative app repository for Android, especially known for its main repository dedicated to free and open-source software. F-Droid is often recommended among security and privacy enthusiasts, but how does it stack up against Play Store in practice? This write-up will attempt to emphasize major security issues with F-Droid that you should consider.
 
 Before we start, a few things to keep in mind:
 
