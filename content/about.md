@@ -12,7 +12,7 @@ And as you can tell, I'm a nerd.
 ```
 
 ```txt
-$ ls content/
+$ ls -l content/
 technology
 security
 privacy
@@ -24,6 +24,6 @@ science
 ```
 
 ```txt
-$ git config --get remote.origin.rul
+$ git config --get remote.origin.url
 https://github.com/Wonderfall/wonderfall.github.io
 ```
