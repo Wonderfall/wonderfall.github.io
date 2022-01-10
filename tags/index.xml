@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on Wonder&#39;s Lab</title>
-    <link>https://wonderfall.github.io/tags/</link>
+    <link>https://wonderfall.dev/tags/</link>
     <description>Recent content in Tags on Wonder&#39;s Lab</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 02 Jan 2022 21:28:31 +0000</lastBuildDate><atom:link href="https://wonderfall.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 02 Jan 2022 21:28:31 +0000</lastBuildDate><atom:link href="https://wonderfall.dev/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>android</title>
-      <link>https://wonderfall.github.io/tags/android/</link>
+      <link>https://wonderfall.dev/tags/android/</link>
       <pubDate>Sun, 02 Jan 2022 21:28:31 +0000</pubDate>
       
-      <guid>https://wonderfall.github.io/tags/android/</guid>
+      <guid>https://wonderfall.dev/tags/android/</guid>
       <description></description>
     </item>
     
     <item>
       <title>security</title>
-      <link>https://wonderfall.github.io/tags/security/</link>
+      <link>https://wonderfall.dev/tags/security/</link>
       <pubDate>Sun, 02 Jan 2022 21:28:31 +0000</pubDate>
       
-      <guid>https://wonderfall.github.io/tags/security/</guid>
+      <guid>https://wonderfall.dev/tags/security/</guid>
       <description></description>
     </item>
     
