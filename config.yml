@@ -75,6 +75,6 @@ menu:
       url: /about/
       weight: 20
     - identifier: french
-      name: french blog
+      name: french
       url: https://wonderfall.space
       weight: 99
