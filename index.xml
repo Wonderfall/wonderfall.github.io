@@ -25,7 +25,7 @@ Before we start, a few things to keep in mind:
       
       <guid>https://wonderfall.dev/about/</guid>
       <description>You may call me &amp;ldquo;Wonderfall&amp;rdquo;. I was young and it sounded cool.
-$ whoami I&amp;#39;m just a random guy passing by on the Internet who is interested in all kinds of things. And as you can tell, I&amp;#39;m a nerd. $ ls content/ technology security privacy rants photography pharmacology medicine science $ git config --get remote.origin.rul https://github.com/Wonderfall/wonderfall.github.io </description>
+$ whoami I&amp;#39;m just a random guy passing by on the Internet who is interested in all kinds of things. And as you can tell, I&amp;#39;m a nerd. $ ls -l content/ technology security privacy rants photography pharmacology medicine science $ git config --get remote.origin.url https://github.com/Wonderfall/wonderfall.github.io </description>
     </item>
     
   </channel>
