@@ -70,6 +70,10 @@ menu:
       name: tags
       url: /tags/
       weight: 10
+    - identifier: about
+      name: about
+      url: /about/
+      weight: 20
     - identifier: french
       name: french blog
       url: https://wonderfall.space
