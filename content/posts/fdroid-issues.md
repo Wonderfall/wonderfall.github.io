@@ -13,6 +13,8 @@ Before we start, a few things to keep in mind:
 - You have your own reasons for using open-source or free/libre/whatever software which won't be discussed here. A development model shouldn't be an excuse for bad practices and shouldn't lure you into believing that it can provide strong guarantees it cannot.
 - A lot of information in this article is sourced from official and trusted sources, but you're welcome to do your own research. As the author of this article, I'm only interested in facts and not ideologies.
 
+*This is not an in-depth security review, nor is it exhaustive.*
+
 ## 1. The trusted party problem
 To understand why this is a problem, you'll have to understand a bit about F-Droid's architecture, the things it does very differently from other app repositories, and the [Android platform security model](https://arxiv.org/pdf/1904.05572.pdf).
 
