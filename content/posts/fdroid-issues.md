@@ -77,7 +77,7 @@ The F-Droid client allows multiple repositories to coexist within the same app. 
 
 Their client also lacks **TLS certificate pinning**, unlike Play Store which does that for all connections to Google. Certificate pinning is a way for apps to increase the security of their connection to services [by providing a set of public key hashes](https://developer.android.com/training/articles/security-config#CertificatePinning) of known-good certificates for these services instead of trusting pre-installed CAs. This can avoid some cases where an interception (*man-in-the-middle* attack) could be possible and lead to various security issues considering you're trusting the app to deliver you other apps.
 
-It is an important security feature that is also straightforward to implement. See how GrapheneOS pins both root and CA certificates in [Auditor](https://github.com/GrapheneOS/Auditor) for their attestation service:
+It is an important security feature that is also straightforward to implement using the [declarative network security configuration](https://developer.android.com/training/articles/security-config) available since Android 7.0 (API level 24). See how GrapheneOS pins both root and CA certificates in [Auditor](https://github.com/GrapheneOS/Auditor) for their attestation service:
 
 ```
 <!-- res/xml/network_security_config.xml -->
