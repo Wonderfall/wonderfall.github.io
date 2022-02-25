@@ -156,7 +156,7 @@ It doesn't matter as you shouldn't really rely on any quality control to be the 
 
 > Aren't open-source apps more secure? Doesn't it make F-Droid safer?
 
-You can still find and get your open-source apps elsewhere. And no, open-source apps aren't necessarily more private or secure. Instead, you should rely on the strong security and privacy guarantees provided by a modern operating system with **a robust sandboxing/permission model**, namely modern Android, GrapheneOS and iOS. Pay close attention to the permissions you grant, and avoid legacy apps as they could require invasive permissions to run.
+You can still find and get your open-source apps elsewhere. And no, open-source apps [aren't necessarily more private or secure](https://seirdy.one/2022/02/02/floss-security.html). Instead, you should rely on the strong security and privacy guarantees provided by a modern operating system with **a robust sandboxing/permission model**, namely modern Android, GrapheneOS and iOS. Pay close attention to the permissions you grant, and avoid legacy apps as they could require invasive permissions to run.
 
 > Isn't Google evil? Isn't Play Store spyware?
 
