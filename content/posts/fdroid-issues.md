@@ -148,7 +148,7 @@ Also, as written above: the OS pins the app signature for all profiles upon inst
 
 > Should I really care?
 
-It's up to your threat model, and of course your personal preferences. Most likely, your phone won't turn into a nuclear weapon if you install F-Droid on it - and this is far from the point that this article is trying to make. Still, I believe these information will be valuable for anyone who values a **practical approach to privacy** (rather than an ideological one).
+It's up to your threat model, and of course your personal preferences. Most likely, your phone won't turn into a nuclear weapon if you install F-Droid on it - and this is far from the point that this article is trying to make. Still, I believe this information will be valuable for anyone who values a **practical approach to privacy** (rather than an ideological one).
 
 > But there is more malware in Play Store! How can you say that it's more secure?
 
