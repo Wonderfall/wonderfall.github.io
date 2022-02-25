@@ -134,7 +134,7 @@ If downloading APKs from GitHub, you can use `apksigner` to validate the authent
 apksigner verify --print-certs --verbose myCoolApp.apk
 ```
 
-Also, as written above: the OS pins the app signature for all profiles upon installation, and enforces it for app updates.
+Also, as written above: the OS pins the app signature for all profiles upon installation, and enforces it for app updates. In practice, this means the source doesn't matter as much after the initial installation.
 
 > Should I really care?
 
