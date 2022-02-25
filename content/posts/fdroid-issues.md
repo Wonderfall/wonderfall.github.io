@@ -128,6 +128,14 @@ F-Droid **weakens the security model of Android substantially** for all of the r
 
 F-Droid is not the only way to get and support open-source apps. Sure, it can help you in finding one that you wouldn't have known existed otherwise. Many developers also publish their FOSS apps on the **Play Store** or their website directly. Most of the time, releases are available on **GitHub**, which is great since each GitHub releases page has an Atom feed. Nonetheless, I'd still recommend using **Play Store for top-notch security** as it does additional checks, and it is even perfectly usable on GrapheneOS with their [sandboxed Play services](https://grapheneos.org/usage#sandboxed-play-services) compatibility layer.
 
+If downloading APKs from GitHub, you can use `apksigner` to validate the authenticity by comparing the certificate fingerprint against the fingerprint from another source (it wouldn't matter otherwise). This is how you may proceed to get the certificate:
+
+```
+apksigner verify --print-certs --verbose myCoolApp.apk
+```
+
+Also, as written above: the OS pins the app signature for all profiles upon installation, and enforces it for app updates.
+
 > Should I really care?
 
 It's up to your threat model, and of course your personal preferences. Most likely, your phone won't turn into a nuclear weapon if you install F-Droid on it - and this is far the point that this article is trying to make. Still, I believe these information will be valuable for anyone who values a **practical approach to privacy** (rather than an ideological one).
