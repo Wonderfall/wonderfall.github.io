@@ -38,7 +38,7 @@ Google's approach is [code transparency for app bundles](https://developer.andro
 
 > What about other app repositories such as Amazon?
 
-[To my current knowledge](https://developer.amazon.com/docs/app-submission/understanding-submission.html#code_wrapper), Amazon app repository has always been wrapping APKs with their own code (including their own trackers), and this means they were effectively resigning submitted APKs.
+[To my current knowledge](https://developer.amazon.com/docs/app-submission/understanding-submission.html#code_wrapper), the Amazon Appstore has always been wrapping APKs with their own code (including their own trackers), and this means they were effectively resigning submitted APKs.
 
 If you understood correctly the information above, Google can't do this for apps that haven't opted in Play App Signing. As for apps concerned by Play App Signing, while Google could technically introduce their own code like Amazon, they wouldn't do that without telling about it since this will be easily noticeable by the developer and more globally researchers. They have other means on the Android app development platform to do so. Believing they won't do that based on this principle is not a strong guarantee, however: hence the above paragraph about code transparency for app bundles.
 
