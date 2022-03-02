@@ -31,6 +31,8 @@ F-Droid requires that the source code of the app is exempt from any proprietary 
 
 [You don't have to take my word for it](https://forum.f-droid.org/t/is-it-as-safe-as-it-is-from-fdroid-official-repo/15956/12): they openly admit themselves it's a [very basic process](https://forum.f-droid.org/t/is-it-as-safe-as-it-is-from-fdroid-official-repo/15956/2) relying on badness enumeration (this doesn't work by the way) which consists in a few scripts scanning the code for proprietary blobs and known trackers. You are therefore not exempted from trusting upstream developers and it goes for any repository.
 
+*A tempting idea would be to compare F-Droid to the desktop Linux model where users trust their distribution maintainers out-of-the-box (this can be sane if you're already trusting the OS anyway), but the desktop platform is intrinsically chaotic and heterogeneous for better and for worse. It really shouldn't be compared to the Android platform in any way.*
+
 > How can you be sure that the app repository can be held to account for the code it delivers?
 
 F-Droid's answer, interesting yet largely unused, is [build reproducibility](https://f-droid.org/en/docs/Reproducible_Builds/). While deterministic builds are a neat idea in theory, it requires the developer to make their toolchain match with what F-Droid provides. It's additional work on both ends sometimes resulting in [apps severely lagging behind in updates](https://code.briarproject.org/briar/briar/-/issues/1612), so reproducible builds are not as common as we would have wanted. It should be noted that reproducible builds in the main repository can be exclusively developer-signed.
@@ -165,6 +167,10 @@ As explained above, it doesn't matter as you shouldn't really rely on any qualit
 > Aren't open-source apps more secure? Doesn't it make F-Droid safer?
 
 You can still find and get your open-source apps elsewhere. And no, open-source apps [aren't necessarily more private or secure](https://seirdy.one/2022/02/02/floss-security.html). Instead, you should rely on the strong security and privacy guarantees provided by a modern operating system with **a robust sandboxing/permission model**, namely modern Android, GrapheneOS and iOS. Pay close attention to the permissions you grant, and avoid legacy apps as they could require invasive permissions to run.
+
+When it comes to *trackers* (this really comes up a lot), you shouldn't believe in the flawed idea that you can enumerate all of them. The *enumerating badness* approach is [known to be flawed in the security field](https://www.ranum.com/security/computer_security/editorials/dumb/), and the same applies to privacy. You shouldn't believe that a random script can detect every single line of code that can be used for data exfiltration. Data exfiltration can be properly prevented in the first place by the permission model, which again **denies access to sensitive data by default**: this is a simple, yet rigorous and effective approach.
+
+No app should be unnecessarily entrusted with any kind of permission. It is only if you deem it necessary that you should allow access to a type of data, and this access should be as fine-grained as possible. That's the way the Android platform works (regular apps run in the explicit `untrusted_app` domain) and continues evolving. Contrary to some popular beliefs, usability and most productivity tasks can still be achieved in a secure and private way.
 
 > Isn't Google evil? Isn't Play Store spyware?
 
