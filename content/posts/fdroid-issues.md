@@ -11,7 +11,8 @@ Before we start, a few things to keep in mind:
 
 - The main goal of this write-up was to inform users so they can make responsible choices, not to trash someone else's work. I have respect for any work done in the name of good intentions. Likewise, please don't misinterpret the intentions of this article.
 - You have your own reasons for using open-source or free/libre/whatever software which won't be discussed here. A development model shouldn't be an excuse for bad practices and shouldn't lure you into believing that it can provide strong guarantees it cannot.
-- A lot of information in this article is sourced from official and trusted sources, but you're welcome to do your own research. As the author of this article, I'm only interested in facts and not ideologies.
+- A lot of information in this article is sourced from official and trusted sources, but you're welcome to do your own research.
+- These analyses do not account for threat models and personal preferences. As the author of this article, I'm only interested in facts and not ideologies.
 
 *This is not an in-depth security review, nor is it exhaustive.*
 
@@ -147,13 +148,15 @@ This is how you may proceed to get the app certificate:
 apksigner verify --print-certs --verbose myCoolApp.apk
 ```
 
-Also, as written above: the OS pins the app signature for all profiles upon installation, and enforces it for app updates. In practice, this means the source doesn't matter as much after the initial installation.
+Also, as written above: the OS pins the app signature (for all profiles) upon installation, and enforces signature check for app updates. In practice, this means the source doesn't matter as much after the initial installation.
 
 For most people, I'd recommend just using **Play Store for top-notch security** as it does additional checks. Play Store isn't quite flawless, but emphasises the adoption of modern security standards which in turn encourages better privacy practices; as strange as it may sound, Google is not always doing bad things in that regard.
 
+*Note: this article obviously can't address all the flaws related to Play Store itself. Again, the main topic of this article is about F-Droid and should not be seen as an exhaustive comparaison between different app repositories.*
+
 > Should I really care?
 
-It's up to your threat model, and of course your personal preferences. Most likely, your phone won't turn into a nuclear weapon if you install F-Droid on it - and this is far from the point that this article is trying to make. Still, I believe the information presented will be valuable for anyone who values a **practical approach to privacy** (rather than an ideological one).
+**It's up to your threat model**, and of course your personal preferences. Most likely, your phone won't turn into a nuclear weapon if you install F-Droid on it - and this is far from the point that this article is trying to make. Still, I believe the information presented will be valuable for anyone who values a **practical approach to privacy** (rather than an ideological one). Such an approach is partially described below.
 
 > But there is more malware in Play Store! How can you say that it's more secure?
 
