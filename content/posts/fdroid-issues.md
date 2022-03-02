@@ -89,14 +89,14 @@ As a matter of fact, the [new unattended update API](https://developer.android.c
 
 Their client also lacks **TLS certificate pinning**, unlike Play Store which does that for all connections to Google. Certificate pinning is a way for apps to increase the security of their connection to services [by providing a set of public key hashes](https://developer.android.com/training/articles/security-config#CertificatePinning) of known-good certificates for these services instead of trusting pre-installed CAs. This can avoid some cases where an interception (*man-in-the-middle* attack) could be possible and lead to various security issues considering you're trusting the app to deliver you other apps.
 
-It is an important security feature that is also straightforward to implement using the [declarative network security configuration](https://developer.android.com/training/articles/security-config) available since Android 7.0 (API level 24). See how GrapheneOS pins both root and CA certificates in [Auditor](https://github.com/GrapheneOS/Auditor) for their attestation service:
+It is an important security feature that is also straightforward to implement using the [declarative network security configuration](https://developer.android.com/training/articles/security-config) available since Android 7.0 (API level 24). See how GrapheneOS pins both root and CA certificates in their [app repository client](https://github.com/GrapheneOS/Apps):
 
 ```
 <!-- res/xml/network_security_config.xml -->
 <network-security-config>
     <base-config cleartextTrafficPermitted="false"/>
     <domain-config>
-        <domain includeSubdomains="true">attestation.app</domain>
+        <domain includeSubdomains="true">apps.grapheneos.org</domain>
         <pin-set>
             <!-- ISRG Root X1 -->
             <pin digest="SHA-256">C5+lpZ7tcVwmwQIMcRtPbsQtWLABXhQzejna0wHFr8M=</pin>
