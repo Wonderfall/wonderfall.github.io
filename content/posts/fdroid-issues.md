@@ -89,7 +89,9 @@ There is little practical reason for developers not to increase the target SDK v
 
 At the time of writing:
 - Android 9 is the oldest Android version that is [getting security updates](https://endoflife.date/android).
-- ~80% of the Android devices used in the world are **at least** running 8.0 Oreo ([Android Studio](https://developer.android.com/about/dashboards)).
+- [~80% of the Android devices](https://developer.android.com/about/dashboards) used in the world are **at least** running 8.0 Oreo.
+
+*Overall statistics do not reflect real-world usage of a given app (people using old devices are not necessarily using your app). If anything, it should be viewed as an underestimation.*
 
 ## 4. General lack of good practices
 The F-Droid client allows multiple repositories to coexist within the same app. Many of the issues highlighted above were focused on the main official repository which most of the F-Droid users will use anyway. However, having **other repositories in a single app also violates the security model of Android** which was not designed for this at all. The OS expects you to trust **an app repository as a single source** of apps, yet F-Droid isn't that by design as it mixes several repositories in one single app. This is important because the OS management APIs and features (such as [UserManager](https://developer.android.com/reference/android/os/UserManager)) are not meant for this and see F-Droid as a single source, so you're trusting the app client to not mess up far more than you should. It is also worth noting the repository metadata format isn't properly signed by lacking whole-file signing and key rotation.
