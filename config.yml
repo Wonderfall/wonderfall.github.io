@@ -46,7 +46,7 @@ params:
     - name: twitter
       url: "https://twitter.com/w0nderfall"
     - name: mastodon
-      url: "https://sheikah.online"
+      url: "https://mastoid.dev"
     - name: matrix
       url: "https://matrix.to/#/@wonderfall:targaryen.house"
     - name: github
