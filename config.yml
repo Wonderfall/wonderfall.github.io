@@ -38,6 +38,10 @@ params:
   showtoc: true
   tocopen: false
 
+  assets:
+    disableHLJS: true
+    disableFingerprinting: true
+
   homeInfoParams:
     Title: "Hi there. I'm a bug on the Internet."
     Content: Thoughts and research on security, privacy, and pharmacology.
