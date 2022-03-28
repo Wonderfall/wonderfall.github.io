@@ -52,7 +52,7 @@ params:
     - name: mastodon
       url: "https://mastoid.dev"
     - name: matrix
-      url: "https://matrix.to/#/@wonderfall:targaryen.house"
+      url: "https://matrix.to/#/@wonderfall:lysergide.dev"
     - name: github
       url: "https://github.com/Wonderfall"
     - name: rss
