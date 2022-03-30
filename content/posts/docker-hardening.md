@@ -7,8 +7,8 @@ tags: ['security', 'container', 'linux']
 
 Containers aren't that new fancy thing anymore, but they were a big deal. And they still are. They are a concrete solution to the following problem:
 
-> - Hey, your software doesn't work...
-> - Sorry, it works on my computer! Can't help you.
+> \- Hey, your software doesn't work...
+> \- Sorry, it works on my computer! Can't help you.
 
 Whether we like them or not, containers are here to stay. Their expressiveness and semantics allow for an abstraction of the OS dependencies that a software has, the latter being often dynamically linked against certain libraries. The developer can therefore provide a known-good environment where it is expected that their software "just works". That is particularly useful for development to eliminate environment-related issues, and that is often used in production as well.
 
