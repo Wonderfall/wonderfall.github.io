@@ -58,7 +58,7 @@ As an image maintainer, you can sign your images to improve the authenticity ass
 ## Leave my root alone!
 
 ### Attack surface
-Traditionnaly, Docker runs as a daemon owned by root. That also means that root in the container is actually the root on the host and may be a few commands away from compromising the host. More generally, the attacker has to exploit the available attack surface to escape the container. There is a huge attack surface, actually: the Linux kernel. [Someone wise once said](https://grsecurity.net/huawei_hksp_introduces_trivially_exploitable_vulnerability):
+Traditionally, Docker runs as a daemon owned by root. That also means that root in the container is actually the root on the host and may be a few commands away from compromising the host. More generally, the attacker has to exploit the available attack surface to escape the container. There is a huge attack surface, actually: the Linux kernel. [Someone wise once said](https://grsecurity.net/huawei_hksp_introduces_trivially_exploitable_vulnerability):
 
 > The kernel can effectively be thought of as the largest, most vulnerable setuid root binary on the system.
 
