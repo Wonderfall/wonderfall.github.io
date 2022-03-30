@@ -75,7 +75,7 @@ By the way, it goes without saying that any user (or container) who has access t
 ### Avoiding root
 root can be avoided in different ways in the final container:
 - Image creation time: setting the `USER` instruction in the Dockerfile.
-- Container creation time: setting the user via the tools available (`user:` in the Compose file).
+- Container creation time: via the tools available (`user:` in the Compose file).
 - Container runtime: degrading privileges with entrypoints scripts (`gosu UID:GID`).
 
 Well-made images with security in mind will have a `USER` instruction. In my experience, most peole will run images blindly, so it's good harm reduction. Setting the user manually works in some images that aren't designed without root in mind, and it's also great to mitigate some *scenarii* where the image is controlled by an attacker. You also won't have surprises when mounting volumes, so I highly recommend setting the user explicitly and make sure volume permissions are correct once. Some images allow users to define their own UID/GID user with environment variables, with an entrypoint script that runs as root and takes care of the volume permissions before dropping privileges. While technically fine, it is still attack surface, and it requires the `SETUID`/`SETGID` capabilities to be available in the container.
@@ -83,12 +83,10 @@ Well-made images with security in mind will have a `USER` instruction. In my exp
 As mentioned just above, [user namespaces](https://www.man7.org/linux/man-pages/man7/user_namespaces.7.html) are a solution to ensure root in the container is not root on the host. Docker supports user namespaces, for instance you could set the default mapping in `/etc/docker/daemon.json`:
 
 ```
-{
     "userns-remap": "default"
-}
 ```
 
-`whoami && sleep 60` in the container will return root, but `ps -fC sleep` on the host will shows us the PID of another user. That is nice, but it has limitations and therefore shouldn't be considered as a real sandbox. In fact, the paradox is that [user namespaces are attack surface](https://lists.archlinux.org/pipermail/arch-general/2017-February/043066.html), and it's common to restrict them to privileged users (`kernel.unprivileged_userns_clone=0`). That is fine for Docker with its traditional root daemon, but Podman expects you to let unprivileged users interact with user namespaces that are privileged code.
+`whoami && sleep 60` in the container will return root, but `ps -fC sleep` on the host will show us the PID of another user. That is nice, but it has limitations and therefore shouldn't be considered as a real sandbox. In fact, the paradox is that [user namespaces are attack surface](https://lists.archlinux.org/pipermail/arch-general/2017-February/043066.html), and it's common to restrict them to privileged users (`kernel.unprivileged_userns_clone=0`). That is fine for Docker with its traditional root daemon, but Podman expects you to let unprivileged users interact with user namespaces (so essentially privileged code).
 
 After ensuring root isn't used in your containers, you should look into setting the `NO_NEW_PRIVS` flag. [This Linux feature](https://docs.kernel.org/userspace-api/no_new_privs.html) restricts syscalls such as `execve()` from granting privileges, which is what you want to restrict in-container privilege escalation. This flag can be set for a given container in a Compose file:
 
@@ -140,7 +138,9 @@ Also, use cgroups to restrict system resources. You likely don't want a guest co
 More runtime options can be found in [the official documentation](https://docs.docker.com/config/containers/resource_constraints/). All of them should have a Compose equivalent.
 
 ### Read-only filesystem
-It is good practice to treat the image as some refer to the "golden image". In other words, you'll run containers in *read-only* mode, with an immutable filesystem inherited from the image. Only the mounted volumes will be read/write accessible. However, the image may not be perfect and require read/write access to some parts of the filesystem, likely directories such as `/tmp`, `/run` or `/var`. You can make a **tmpfs** for those (a temporary filesystem in the container attributed memory), because they're not persistent data anyway.
+It is good practice to treat the image as some refer to the "golden image".
+
+In other words, you'll run containers in *read-only* mode, with an immutable filesystem inherited from the image. Only the mounted volumes will be read/write accessible. However, the image may not be perfect and require read/write access to some parts of the filesystem, likely directories such as `/tmp`, `/run` or `/var`. You can make a **tmpfs** for those (a temporary filesystem in the container attributed memory), because they're not persistent data anyway.
 
 In a Compose file, that would look like the following settings:
 
@@ -156,14 +156,14 @@ That is quite verbose indeed, but that's to show you the different options for a
 By default, all Docker containers will use the default network bridge. They will see and be able to communicate with each other. Each container should have its own user-defined bridge network, and each connection between containers should have an internal network. If you intend to run a reverse proxy in front of several containers, you should make a dedicated network for each container you want to expose to the reverse proxy.
 
 ## Alternative runtimes (gVisor)
-`runc` is the reference OCI runtime, but that means other runtimes can exist as well as long as they're compliant with OCI. These runtimes can be interchanged quite seamlessly. There's a few alternatives, such as [crun](https://github.com/containers/crun) or [youki](https://github.com/containers/youki), respectively implemented in C and Rust (`runc` is a Go implementation). However, there is one particular runtime that does a lot more for security: `runsc`, provided by the [gVisor project](https://gvisor.dev/).
+`runc` is the reference OCI runtime, but that means other runtimes can exist as well as long as they're compliant with the OCI standard. These runtimes can be interchanged quite seamlessly. There's a few alternatives, such as [crun](https://github.com/containers/crun) or [youki](https://github.com/containers/youki), respectively implemented in C and Rust (`runc` is a Go implementation). However, there is one particular runtime that does a lot more for security: `runsc`, provided by the [gVisor project](https://gvisor.dev/).
 
 **Containers are not a sandbox**, and while we can improve their security, they will fundamentally share a common attack surface with the host. Virtual machines are a solution to that problem, but you might prefer container semantics and ecosystem. gVisor can be perceived as an attempt to get the "best of both worlds": containers that are easy to manage while providing a native isolation boundary. gVisor did just that by implementing two things:
 
 - **Sentry**: an application kernel in Go, a language known to be memory-safe. It implements the Linux logic in userspace such as various system calls.
 - **Gofer**: a host process which communicates with Sentry and the host filesystem, since Sentry is restricted in that aspect.
 
-A platform like ptrace or KVM are used to intercept system calls and redirect them from the application to Sentry, which is running in the userspace. This has some costs: there is a higher per-syscall overhead, and compatibility is reduced since not all syscalls are implemented. On top of that, gVisor employs security mechanisms we've glanced over above, such as a very restrictive seccomp profile between Sentry and the host kernel.
+A platform like ptrace or KVM is used to intercept system calls and redirect them from the application to Sentry, which is running in the userspace. This has some costs: there is a higher per-syscall overhead, and compatibility is reduced since not all syscalls are implemented. On top of that, gVisor employs security mechanisms we've glanced over above, such as a very restrictive seccomp profile between Sentry and the host kernel, and a dedicated user namespaces mapping in the sandbox.
 
 The security model of gVisor is comparable to what you would expect from a virtual machine. It is also very easy to [install and use](https://gvisor.dev/docs/user_guide/install/). The path to runsc along with its different configuration flags (`runsc flags`) should be added to `/etc/docker/daemon.json`:
 
