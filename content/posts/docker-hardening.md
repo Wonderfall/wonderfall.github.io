@@ -195,8 +195,8 @@ Linux 4.4.0 #1 SMP Sun Jan 10 15:06:54 PST 2016 x86_64 GNU/Linux
 
 Linux 4.4.0 is shown because that is the version of the Linux API that Sentry tries to mimic. As you've probably guessed, you're not really using Linux 4.4.0, but the application kernel that behaves like it. By the way, gVisor is of course compatible with cgroups.
 
-## Conclusion
-What is a container after all? Like I wrote above, a container is mostly defined by its semantics and ecosystem. Containers shouldn't be solely defined by the OCI reference runtime implementation, as we've seen with gVisor that provides an entirely different security model.
+## Conclusion: what's a container after all?
+Like I wrote above, a container is mostly defined by its semantics and ecosystem. Containers shouldn't be solely defined by the OCI reference runtime implementation, as we've seen with gVisor that provides an entirely different security model.
 
 Still not convinced? What if I told you a container can leverage the same technologies as a virtual machine? That is exactly what [Kata Containers](https://katacontainers.io/) does by using a VMM like QEMU-lite to provide containers that are in fact lightweight virtual machines, with their traditional resources and security model, compatibility with container semantics and toolset, and an optmized overhead. While not in the OCI ecosystem, Amazon achieves quite the same with [Firecracker](https://firecracker-microvm.github.io/).
 
