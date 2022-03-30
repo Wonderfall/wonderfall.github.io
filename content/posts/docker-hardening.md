@@ -126,7 +126,7 @@ MAC stand for Mandatory Access Control: traditionnally a Linux Security Module t
 ### seccomp
 seccomp (short for secure computing mode) on the other hand is a much simpler and complementary tool, and there is no reason not to use it. What it does is restricting a process to a set of system calls, thus drastically reducing the attack surface available.
 
-Docker provides default profiles for AppArmor and seccomp, and they're enabled by default for newly created containers unless the `unconfined` option is explicitly passed. These profiles are a great start, but you should do much more if you take security seriously, because they were were made to not break compatibility with a large range of images. The default seccomp profile only disables [around 44 syscalls](https://docs.docker.com/engine/security/seccomp/#significant-syscalls-blocked-by-the-default-profile), which are mostly not very common and/or obsoleted.
+Docker provides default profiles for AppArmor and seccomp, and they're enabled by default for newly created containers unless the `unconfined` option is explicitly passed. These profiles are a great start, but you should do much more if you take security seriously, because they were made to not break compatibility with a large range of images. The default seccomp profile only disables [around 44 syscalls](https://docs.docker.com/engine/security/seccomp/#significant-syscalls-blocked-by-the-default-profile), which are mostly not very common and/or obsoleted.
 
 ### cgroups
 Also, use cgroups to restrict system resources. You likely don't want a guest container to monopolize the host resources. In a Compose file:
