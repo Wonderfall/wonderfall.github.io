@@ -8,6 +8,7 @@ tags: ['security', 'container', 'linux']
 Containers aren't that new fancy thing anymore, but they were a big deal. And they still are. They are a concrete solution to the following problem:
 
 > \- Hey, your software doesn't work...
+
 > \- Sorry, it works on my computer! Can't help you.
 
 Whether we like them or not, containers are here to stay. Their expressiveness and semantics allow for an abstraction of the OS dependencies that a software has, the latter being often dynamically linked against certain libraries. The developer can therefore provide a known-good environment where it is expected that their software "just works". That is particularly useful for development to eliminate environment-related issues, and that is often used in production as well.
@@ -138,7 +139,7 @@ Also, use cgroups to restrict system resources. You likely don't want a guest co
 More runtime options can be found in [the official documentation](https://docs.docker.com/config/containers/resource_constraints/). All of them should have a Compose equivalent.
 
 ### Read-only filesystem
-It is good practice to treat the image as some refer to the "golden image".
+It is good practice to treat the image as some refer to as the "golden image".
 
 In other words, you'll run containers in *read-only* mode, with an immutable filesystem inherited from the image. Only the mounted volumes will be read/write accessible. However, the image may not be perfect and require read/write access to some parts of the filesystem, likely directories such as `/tmp`, `/run` or `/var`. You can make a **tmpfs** for those (a temporary filesystem in the container attributed memory), because they're not persistent data anyway.
 
