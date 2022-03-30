@@ -81,6 +81,7 @@ root can be avoided in different ways in the final container:
 
 Well-made images with security in mind will have a `USER` instruction. In my experience, most people will run images blindly, so it's good harm reduction. Setting the user manually works in some images that aren't designed without root in mind, and it's also great to mitigate some *scenarii* where the image is controlled by an attacker. You also won't have surprises when mounting volumes, so I highly recommend setting the user explicitly and make sure volume permissions are correct once. Some images allow users to define their own UID/GID user with environment variables, with an entrypoint script that runs as root and takes care of the volume permissions before dropping privileges. While technically fine, it is still attack surface, and it requires the `SETUID`/`SETGID` capabilities to be available in the container.
 
+### User namespaces: sandbox or paradox?
 As mentioned just above, [user namespaces](https://www.man7.org/linux/man-pages/man7/user_namespaces.7.html) are a solution to ensure root in the container is not root on the host. Docker supports user namespaces, for instance you could set the default mapping in `/etc/docker/daemon.json`:
 
 ```
@@ -89,6 +90,7 @@ As mentioned just above, [user namespaces](https://www.man7.org/linux/man-pages/
 
 `whoami && sleep 60` in the container will return root, but `ps -fC sleep` on the host will show us the PID of another user. That is nice, but it has limitations and therefore shouldn't be considered as a real sandbox. In fact, the paradox is that [user namespaces are attack surface](https://lists.archlinux.org/pipermail/arch-general/2017-February/043066.html), and it's common to restrict them to privileged users (`kernel.unprivileged_userns_clone=0`). That is fine for Docker with its traditional root daemon, but Podman expects you to let unprivileged users interact with user namespaces (so essentially privileged code).
 
+### The NO_NEW_PRIVS flag
 After ensuring root isn't used in your containers, you should look into setting the `NO_NEW_PRIVS` flag. [This Linux feature](https://docs.kernel.org/userspace-api/no_new_privs.html) restricts syscalls such as `execve()` from granting privileges, which is what you want to restrict in-container privilege escalation. This flag can be set for a given container in a Compose file:
 
 ```
