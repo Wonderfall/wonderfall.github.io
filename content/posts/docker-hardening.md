@@ -99,7 +99,7 @@ After ensuring root isn't used in your containers, you should look into setting 
 Gaining privileges in the container will be much harder that way.
 
 ### Capabilities
-Furthermore, we should mention capabilities: root powers are divided into distinct units by the Linux kernel, called capabilities. Each granted capability also grants privielege and therefore access to a significant amount of attack surface. Security researcher Brad Spengler enumerates [19 important capabilities](https://forums.grsecurity.net/viewtopic.php?f=7&t=2522#p10271). Docker **restricts certain capabilities by default**, but [some of the most important ones](https://github.com/moby/moby/blob/1308a3a99faa13ff279dcb4eb5ad23aee3ab5cdb/oci/caps/defaults.go) are still available to a container by default.
+Furthermore, we should mention capabilities: root powers are divided into distinct units by the Linux kernel, called capabilities. Each granted capability also grants privilege and therefore access to a significant amount of attack surface. Security researcher Brad Spengler enumerates [19 important capabilities](https://forums.grsecurity.net/viewtopic.php?f=7&t=2522#p10271). Docker **restricts certain capabilities by default**, but [some of the most important ones](https://github.com/moby/moby/blob/1308a3a99faa13ff279dcb4eb5ad23aee3ab5cdb/oci/caps/defaults.go) are still available to a container by default.
 
 You should consider the following rule of thumb:
 - Drop all capabilities by default.
