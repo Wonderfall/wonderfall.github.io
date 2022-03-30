@@ -177,7 +177,7 @@ The security model of gVisor is comparable to what you would expect from a virtu
             ]
         },
         "runsc-kvm": {
-            "path": "/usr/bin/runsc",
+            "path": "/usr/local/bin/runsc",
             "runtimeArgs": [
                 "--platform=kvm"
             ]
