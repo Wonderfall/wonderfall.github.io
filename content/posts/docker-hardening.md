@@ -64,10 +64,10 @@ Traditionally, Docker runs as a daemon owned by root. That also means that root 
 
 That applies particulary to traditional containers which weren't designed to provide a robust level of isolation. A recent example was [CVE-2022-0492](https://unit42.paloaltonetworks.com/cve-2022-0492-cgroups/): the attacker could abuse root in the container to exploit cgroups v1, and compromise the host. Of course defense-in-depth measures would have prevented that, and we'll mention them. But fundamentally, container escapes are possible by design.
 
-Breaking out via the OCI runtime `runc` is also possible, although [CVE-2019-5736](https://unit42.paloaltonetworks.com/breaking-docker-via-runc-explaining-cve-2019-5736/) was a particularly nasty bug. The attacker had to gain access to root in the container first in order to access `proc/[runc-pid]/exe`, which indicates them where to overwrite the `runc` binary.
+Breaking out via the OCI runtime `runc` is also possible, although [CVE-2019-5736](https://unit42.paloaltonetworks.com/breaking-docker-via-runc-explaining-cve-2019-5736/) was a particularly nasty bug. The attacker had to gain access to root in the container first in order to access `/proc/[runc-pid]/exe`, which indicates them where to overwrite the `runc` binary.
 
 Good practices have been therefore established:
-- Avoid using root in the container, plain and simply.
+- Avoid using root in the container, plain and simple.
 - Keep the host kernel, Docker and the OCI runtime updated.
 - Consider the usage of user namespaces.
 
