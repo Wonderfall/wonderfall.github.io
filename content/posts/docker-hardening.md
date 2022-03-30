@@ -201,4 +201,4 @@ Still not convinced? What if I told you a container can leverage the same techno
 
 If you're running untrusted workloads, I highly suggest you consider gVisor instead of a traditional container runtime. Your definition of "untrusted" may vary: for me, almost everything should be considered untrusted. That is how modern security works, and how mobile operating systems work. It's quite simple, security should be simple, and gVisor simply offers native security.
 
-Containers are a popular, yet strange world. They revolutionized the way we make and deploy softwares, but one should not loose the sight of what they really are and aren't. This hardening guide is non-exhaustive, but I hope it can make you aware of some aspects you've never thought of.
+Containers are a popular, yet strange world. They revolutionized the way we make and deploy software, but one should not loose the sight of what they really are and aren't. This hardening guide is non-exhaustive, but I hope it can make you aware of some aspects you've never thought of.
