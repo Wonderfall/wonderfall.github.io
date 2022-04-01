@@ -100,8 +100,8 @@ As mentioned just above, [user namespaces](https://www.man7.org/linux/man-pages/
 
 `whoami && sleep 60` in the container will return root, but `ps -fC sleep` on the host will show us the PID of another user. That is nice, but it has limitations and therefore shouldn't be considered as a real sandbox. In fact, the paradox is that [user namespaces are attack surface](https://lists.archlinux.org/pipermail/arch-general/2017-February/043066.html), and it's common to restrict them to privileged users (`kernel.unprivileged_userns_clone=0`). That is fine for Docker with its traditional root daemon, but Podman expects you to let unprivileged users interact with user namespaces (so essentially privileged code).
 
-### The NO_NEW_PRIVS flag
-After ensuring root isn't used in your containers, you should look into setting the `NO_NEW_PRIVS` flag. [This Linux feature](https://docs.kernel.org/userspace-api/no_new_privs.html) restricts syscalls such as `execve()` from granting privileges, which is what you want to restrict in-container privilege escalation. This flag can be set for a given container in a Compose file:
+### The no_new_privs bit
+After ensuring root isn't used in your containers, you should look into setting the `no_new_privs` bit. [This Linux feature](https://docs.kernel.org/userspace-api/no_new_privs.html) restricts syscalls such as `execve()` from granting privileges, which is what you want to restrict in-container privilege escalation. This flag can be set for a given container in a Compose file:
 
 ```
     security_opt:
@@ -176,7 +176,7 @@ By default, all Docker containers will use the default network bridge. They will
 - **Sentry**: an application kernel in Go, a language known to be memory-safe. It implements the Linux logic in userspace such as various system calls.
 - **Gofer**: a host process which communicates with Sentry and the host filesystem, since Sentry is restricted in that aspect.
 
-A platform like ptrace or KVM is used to intercept system calls and redirect them from the application to Sentry, which is running in the userspace. This has some costs: there is a higher per-syscall overhead, and compatibility is reduced since not all syscalls are implemented. On top of that, gVisor employs security mechanisms we've glanced over above, such as a very restrictive seccomp profile between Sentry and the host kernel, and a dedicated user namespaces mapping in the sandbox.
+A platform like ptrace or KVM is used to intercept system calls and redirect them from the application to Sentry, which is running in the userspace. This has some costs: there is a higher per-syscall overhead, and compatibility is reduced since not all syscalls are implemented. On top of that, gVisor employs security mechanisms we've glanced over above, such as a very restrictive seccomp profile between Sentry and the host kernel, the [new_no_privs bit](https://github.com/google/gvisor/blob/6ef268409620c57197b9d573e23be8cb05dbf381/pkg/sentry/kernel/task_identity.go#L464), and isolated namespaces from the host.
 
 The security model of gVisor is comparable to what you would expect from a virtual machine. It is also very easy to [install and use](https://gvisor.dev/docs/user_guide/install/). The path to runsc along with its different configuration flags (`runsc flags`) should be added to `/etc/docker/daemon.json`:
 
