@@ -15,7 +15,7 @@
       <guid>https://wonderfall.dev/docker-hardening/</guid>
       <description>Containers aren&amp;rsquo;t that new fancy thing anymore, but they were a big deal. And they still are. They are a concrete solution to the following problem:
  - Hey, your software doesn&amp;rsquo;t work&amp;hellip;
-  - Sorry, it works on my computer! Can&amp;rsquo;t help you.
+- Sorry, it works on my computer! Can&amp;rsquo;t help you.
  Whether we like them or not, containers are here to stay. Their expressiveness and semantics allow for an abstraction of the OS dependencies that a software has, the latter being often dynamically linked against certain libraries.</description>
     </item>
     
