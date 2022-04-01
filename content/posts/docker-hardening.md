@@ -8,7 +8,7 @@ tags: ['security', 'container', 'linux']
 Containers aren't that new fancy thing anymore, but they were a big deal. And they still are. They are a concrete solution to the following problem:
 
 > \- Hey, your software doesn't work...
-
+>
 > \- Sorry, it works on my computer! Can't help you.
 
 Whether we like them or not, containers are here to stay. Their expressiveness and semantics allow for an abstraction of the OS dependencies that a software has, the latter being often dynamically linked against certain libraries. The developer can therefore provide a known-good environment where it is expected that their software "just works". That is particularly useful for development to eliminate environment-related issues, and that is often used in production as well.
@@ -133,22 +133,25 @@ If you already run your containers unprivileged without root, your container wil
 MACs and seccomp are robust tools that may vastly improve container security.
 
 ### Mandatory Access Control
-MAC stand for Mandatory Access Control: traditionnally a Linux Security Module that will enforce a policy to restrict the userspace. Examples are **AppArmor** and **SELinux**: the former being more easy-to-use, the later being more fine-grained. Both are strong tools that can help... yet, their sole presence does not mean they're really effective. A robust policy starts from a *deny all* policy, and only allows the necessary resources to be accessed.
+MAC stand for Mandatory Access Control: traditionnally a Linux Security Module that will enforce a policy to restrict the userspace. Examples are **AppArmor** and **SELinux**: the former being more easy-to-use, the later being more fine-grained. Both are strong tools that can help... Yet, their sole presence does not mean they're really effective. A robust policy starts from a *deny all* policy, and only allows the necessary resources to be accessed.
 
 ### seccomp
 seccomp (short for secure computing mode) on the other hand is a much simpler and complementary tool, and there is no reason not to use it. What it does is restricting a process to a set of system calls, thus drastically reducing the attack surface available.
 
-Docker provides default profiles for [AppArmor](https://github.com/moby/moby/tree/85eaf23bf46b12827273ab2ff523c753117dbdc7/profiles/apparmor) and [seccomp](https://github.com/moby/moby/blob/85eaf23bf46b12827273ab2ff523c753117dbdc7/profiles/seccomp/default.json), and they're enabled by default for newly created containers unless the `unconfined` option is explicitly passed. These profiles are a great start, but you should do much more if you take security seriously, because they were made to not break compatibility with a large range of images. The default seccomp profile only disables [around 44 syscalls](https://docs.docker.com/engine/security/seccomp/#significant-syscalls-blocked-by-the-default-profile), which are mostly not very common and/or obsoleted.
+Docker provides default profiles for [AppArmor](https://github.com/moby/moby/tree/85eaf23bf46b12827273ab2ff523c753117dbdc7/profiles/apparmor) and [seccomp](https://github.com/moby/moby/blob/85eaf23bf46b12827273ab2ff523c753117dbdc7/profiles/seccomp/default.json), and they're enabled by default for newly created containers unless the `unconfined` option is explicitly passed. Note: Kubernetes doesn't enable the default seccomp profile by default, so you should probably [try it](https://kubernetes.io/docs/tutorials/security/seccomp/#enable-the-use-of-runtimedefault-as-the-default-seccomp-profile-for-all-workloads).
+
+These profiles are a great start, but you should do much more if you take security seriously, because they were made to not break compatibility with a large range of images. The default seccomp profile only disables [around 44 syscalls](https://docs.docker.com/engine/security/seccomp/#significant-syscalls-blocked-by-the-default-profile), which are mostly not very common and/or obsoleted. Of course, the best profile you can get is supposed to be written for a given program. It also doesn't make sense to insist on the permissiveness of the default profiles, and [a lof of work has gone](https://blog.jessfraz.com/post/containers-security-and-echo-chambers/) into hardening containers.
 
 ### cgroups
-Also, use cgroups to restrict system resources. You likely don't want a guest container to monopolize the host resources. In a Compose file:
+Use cgroups to restrict access to hardware and system resources. You likely don't want a guest container to monopolize the host resources. You also don't want to be vulnerable to stupid fork bomb attacks. In a Compose file, consider setting these limits:
 
 ```
     mem_limit: 4g
     cpus: 4
+    pids_limit: 100
 ```
 
-More runtime options can be found in [the official documentation](https://docs.docker.com/config/containers/resource_constraints/). All of them should have a Compose equivalent.
+More runtime options can be found in [the official documentation](https://docs.docker.com/config/containers/resource_constraints/). All of them should have a [Compose spec](https://github.com/compose-spec/compose-spec/blob/master/spec.md) equivalent.
 
 ### Read-only filesystem
 It is good practice to treat the image as some refer to as the "golden image".
