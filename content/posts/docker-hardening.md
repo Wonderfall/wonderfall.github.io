@@ -148,7 +148,7 @@ Use cgroups to restrict access to hardware and system resources. You likely don'
 ```
     mem_limit: 4g
     cpus: 4
-    pids_limit: 100
+    pids_limit: 256
 ```
 
 More runtime options can be found in [the official documentation](https://docs.docker.com/config/containers/resource_constraints/). All of them should have a [Compose spec](https://github.com/compose-spec/compose-spec/blob/master/spec.md) equivalent.
