@@ -79,7 +79,7 @@ Good practices have been therefore established:
 - Keep the host kernel, Docker and the OCI runtime updated.
 - Consider the usage of user namespaces.
 
-By the way, it goes without saying that any user (or container) who has access to the Docker daemon should be considered as privileged as root. It should only be owned by root, and if that doesn't work with your environment, use Docker rootless or Podman.
+By the way, it goes without saying that any user who has access to the Docker daemon should be considered as privileged as root. Mounting the Docker socket (`/var/run/docker.sock`) in a container makes it highly privileged, and so it should be avoided. The socket should only be owned by root, and if that doesn't work with your environment, use Docker rootless or Podman.
 
 ### Avoiding root
 root can be avoided in different ways in the final container:
