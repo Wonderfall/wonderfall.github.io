@@ -161,7 +161,9 @@ The `--cgroup-parent` option should be avoided as it uses the host cgroup and no
 ### Read-only filesystem
 It is good practice to treat the image as some refer to as the "golden image".
 
-In other words, you'll run containers in *read-only* mode, with an immutable filesystem inherited from the image. Only the mounted volumes will be read/write accessible. However, the image may not be perfect and require read/write access to some parts of the filesystem, likely directories such as `/tmp`, `/run` or `/var`. You can make a **tmpfs** for those (a temporary filesystem in the container attributed memory), because they're not persistent data anyway.
+In other words, you'll run containers in *read-only* mode, with an immutable filesystem inherited from the image. Only the mounted volumes will be read/write accessible, and those should ideally be mounted with the `noexec`, `nosuid` and `nodev` options for extra security. If read/write access isn't needed, mount these volumes as read-only too.
+
+However, the image may not be perfect and still require read/write access to some parts of the filesystem, likely directories such as `/tmp`, `/run` or `/var`. You can make a **tmpfs** for those (a temporary filesystem in the container attributed memory), because they're not persistent data anyway.
 
 In a Compose file, that would look like the following settings:
 
