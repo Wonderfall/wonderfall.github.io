@@ -130,6 +130,7 @@ If you already run your containers unprivileged without root, your container wil
     #  - SETUID
     #  - SETGID
 ```
+Never use the `--privileged` unless you really need to: a privileged container is given access to almost all capabilities, kernel features and devices.
 
 ## Other security features
 MACs and seccomp are robust tools that may vastly improve container security.
@@ -172,6 +173,8 @@ That is quite verbose indeed, but that's to show you the different options for a
 
 ### Network isolation
 By default, all Docker containers will use the default network bridge. They will see and be able to communicate with each other. Each container should have its own user-defined bridge network, and each connection between containers should have an internal network. If you intend to run a reverse proxy in front of several containers, you should make a dedicated network for each container you want to expose to the reverse proxy.
+
+The `--network host` option also shouldn't be used for obvious reasons since the container would share the same network as the host, providing no isolation at all.
 
 ## Alternative runtimes (gVisor)
 `runc` is the reference OCI runtime, but that means other runtimes can exist as well as long as they're compliant with the OCI standard. These runtimes can be interchanged quite seamlessly. There's a few alternatives, such as [crun](https://github.com/containers/crun) or [youki](https://github.com/containers/youki), respectively implemented in C and Rust (`runc` is a Go implementation). However, there is one particular runtime that does a lot more for security: `runsc`, provided by the [gVisor project](https://gvisor.dev/) by the folks at Google.
