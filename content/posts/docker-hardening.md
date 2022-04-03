@@ -156,6 +156,8 @@ Use cgroups to restrict access to hardware and system resources. You likely don'
 
 More runtime options can be found in [the official documentation](https://docs.docker.com/config/containers/resource_constraints/). All of them should have a [Compose spec](https://github.com/compose-spec/compose-spec/blob/master/spec.md) equivalent.
 
+The `--cgroup-parent` option should be avoided as it uses the host cgroup and not the one configured from Docker (or else), which is the default.
+
 ### Read-only filesystem
 It is good practice to treat the image as some refer to as the "golden image".
 
