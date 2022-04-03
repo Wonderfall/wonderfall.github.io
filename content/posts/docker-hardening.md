@@ -130,7 +130,7 @@ If you already run your containers unprivileged without root, your container wil
     #  - SETUID
     #  - SETGID
 ```
-Never use the `--privileged` unless you really need to: a privileged container is given access to almost all capabilities, kernel features and devices.
+Never use the `--privileged` option unless you really need to: a privileged container is given access to almost all capabilities, kernel features and devices.
 
 ## Other security features
 MACs and seccomp are robust tools that may vastly improve container security.
