@@ -24,6 +24,10 @@ Then, what happened? *Open Container Initiative* (OCI). That is the current stan
 
 **Docker** is no longer the monolithic platform it once was. `libcontainer` was absorbed by `runc`, the reference OCI runtime. The high-level components of Docker split into different parts related to the upstream Moby project (Docker is the "assembled product" of the "Moby components"). When we refer to Docker, we refer in fact at this powerful high-level API that manages OCI containers. By design, Docker is a daemon that communicates with `containerd`, a lower-level layer, which in turn communicates with the OCI runtime. That also means that you could very well skip Docker altogether and use `containerd` or even `runc` directly.
 
+```
+Docker client <=> Docker daemon <=> containerd <=> containerd-shim <=> runc
+```
+
 **Podman** is an alternative to Docker developed by RedHat, that also intends to be a drop-in replacement for Docker. It doesn't work with a daemon, and can work rootless by design (Docker has support for rootless too, but that is not without caveats). I would largely recommend Podman over Docker for someone who wants a simple tool to run containers and test code on their machine.
 
 **Kubernetes** (also known as K8S) is the container platform made by Google. It is designed with scaling in mind, and is about running containers across a cluster whereas Docker focuses on packaging containers on a single node. Docker Swarm is the direct alternative to that, but it has never really took off due to the popularity of K8S.
