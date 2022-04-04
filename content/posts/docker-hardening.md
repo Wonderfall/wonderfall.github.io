@@ -48,6 +48,22 @@ For these reasons, good practices were established:
 
 "Distroless" is a fancy name referring to an image with a minimal set of dependencies, from none (for fully static binaries) to some common libraries (typically the C library). Google maintains [distroless images](https://github.com/GoogleContainerTools/distroless) you can use as a base for your own images. In my experience, distroless is an excellent option with pure Go binaries. Going with minimal images drastically reduces the available attack surface in the container.
 
+For example, here's a [multi-stage Dockerfile](https://docs.docker.com/develop/develop-images/multistage-build/) resulting in a minimal non-root image for a simple Go project:
+
+```
+FROM golang:alpine as build
+WORKDIR /app
+COPY . .
+RUN CGO_ENABLED=0 go mod -o /my_app cmd/my_app
+
+FROM gcr.io/distroless/static
+COPY --from=build /my_app /
+USER nobody
+ENTRYPOINT ["/my_app"]
+```
+
+The main drawback of using minimal images is the lack of tools that help with debugging, which also constitue the very attack surface we're trying to get rid of. The trade-off is probably not worth for development-focused containers, and if you're running such images in production, you have to be confident enough to operate with them. Note that the image `gcr.io/distroless` has a `:debug` tag to help in that regard.
+
 ### Keeping images up-to-date
 The two other points are highly problematic, because most software vendors just publish an image on release, and forget about it. You should take it up to them if you're running images that are versioned but not regularly updated. I'd say running scheduled builds **once a week** is the bare minimum to make sure dependencies stay up-to-date. Alpine Linux is a better choice than most other "stable" distributions because it usually has more recent packages.
 
