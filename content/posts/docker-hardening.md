@@ -62,7 +62,7 @@ USER nobody
 ENTRYPOINT ["/my_app"]
 ```
 
-The main drawback of using minimal images is the lack of tools that help with debugging, which also constitute the very attack surface we're trying to get rid of. The trade-off is probably not worth the hassle for development-focused containers, and if you're running such images in production, you have to be confident enough to operate with them. Note that the image `gcr.io/distroless` has a `:debug` tag to help in that regard.
+The main drawback of using minimal images is the lack of tools that help with debugging, which also constitute the very attack surface we're trying to get rid of. The trade-off is probably not worth the hassle for development-focused containers, and if you're running such images in production, you have to be confident enough to operate with them. Note that the `gcr.io/distroless` images have a `:debug` tag to help in that regard.
 
 ### Keeping images up-to-date
 The two other points are highly problematic, because most software vendors just publish an image on release, and forget about it. You should take it up to them if you're running images that are versioned but not regularly updated. I'd say running scheduled builds **once a week** is the bare minimum to make sure dependencies stay up-to-date. Alpine Linux is a better choice than most other "stable" distributions because it usually has more recent packages.
