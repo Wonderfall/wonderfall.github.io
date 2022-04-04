@@ -36,6 +36,13 @@ Containers are made from images, and images are typically built from a Dockerfil
 ### Images, immutability and versioning
 Images are what make containers, well, containers. Containers made from the same image should behave similary on different machines. Images can have **tags**, which are useful for software versioning. The usage of generic tags such as `latest` is often discouraged because it defeats the purpose of the expected behavior of the container. Tags are not necessarily immutable by design, and they shouldn't be (more on that below). **Digest**, however, is the attribute of an immutable image, and is often generated with the SHA-256 algorithm.
 
+```
+docker.io/library/golang:1.17.1@sha256:232a180dbcbcfa7250917507f3827d88a9ae89bb1cdd8fe3ac4db7b764ebb25
+         ^          ^       ^                                   ^ 
+         |          |       |                                   |
+     Registry     Image    Tag                          Digest (immutable)
+```
+
 Now onto why tags shouldn't be immutable: as written above, containers bring us an abstraction over the OS dependencies that are used by the packaged software. That is nice indeed, but this shouldn't lure us into believing that we can forget security updates. The fact is, **there is still a whole OS to care about**, and we can't just think of the container as a simple package tool for software.
 
 For these reasons, good practices were established:
