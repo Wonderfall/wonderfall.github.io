@@ -55,11 +55,11 @@ For these reasons, good practices were established:
 - An image should be rebuilt when the images it's based on are updated.
 
 ### A minimal base system
-[Alpine Linux](https://alpinelinux.org/) is often the choice for official images for the first reason. This is not a typical Linux distribution as it uses musl as its C library, but it works quite well. Actually, I'm quite fond of Alpine Linux and `apk` (its package manager). If a supervision suite is needed, I'd look into `s6`. We can do even better than using Alpine by using **distroless images**, allowing us to have state-of-the-art application containers.
+[Alpine Linux](https://alpinelinux.org/) is often the choice for official images for the first reason. This is not a typical Linux distribution as it uses musl as its C library, but it works quite well. Actually, I'm quite fond of Alpine Linux and `apk` (its package manager). If a supervision suite is needed, I'd look into `s6`. If you need a glibc distribution, Debian provides slim variants for lightweight base images. We can do even better than using Alpine by using **distroless images**, allowing us to have state-of-the-art application containers.
 
-"Distroless" is a fancy name referring to an image with a minimal set of dependencies, from none (for fully static binaries) to some common libraries (typically the C library). Google maintains [distroless images](https://github.com/GoogleContainerTools/distroless) you can use as a base for your own images. In my experience, distroless is an excellent option with pure Go binaries. Going with minimal images drastically reduces the available attack surface in the container.
+"Distroless" is a fancy name referring to an image with a minimal set of dependencies, from none (for fully static binaries) to some common libraries (typically the C library). Google maintains [distroless images](https://github.com/GoogleContainerTools/distroless) you can use as a base for your own images. If you were wondering, the difference with `scratch` (empty starting point) is that distroless images contain common dependencies for "almost static" binaries may need, such as `ca-certificates`.
 
-For example, here's a [multi-stage Dockerfile](https://docs.docker.com/develop/develop-images/multistage-build/) resulting in a minimal non-root image for a simple Go project:
+However, distroless images are not suited for every application. In my experience though, distroless is an excellent option with pure Go binaries. Going with minimal images drastically reduces the available attack surface in the container. For example, here's a [multi-stage Dockerfile](https://docs.docker.com/develop/develop-images/multistage-build/) resulting in a minimal non-root image for a simple Go project:
 
 ```
 FROM golang:alpine as build
