@@ -6,7 +6,17 @@
     <description>Recent content on Wonder&#39;s Lab</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 30 Mar 2022 21:23:12 +0000</lastBuildDate><atom:link href="https://wonderfall.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 09 Apr 2022 17:43:12 +0000</lastBuildDate><atom:link href="https://wonderfall.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Securing OpenSSH keys with hardware-based authentication (FIDO2)</title>
+      <link>https://wonderfall.dev/openssh-fido2/</link>
+      <pubDate>Sat, 09 Apr 2022 17:43:12 +0000</pubDate>
+      
+      <guid>https://wonderfall.dev/openssh-fido2/</guid>
+      <description>Passwordless authentication with OpenSSH keys has been the de facto security standard for years. SSH keys are more robust since they&amp;rsquo;re cryptographically sane by default, and are therefore resilient to most bruteforce atacks. They&amp;rsquo;re also easier to manage while enabling a form of decentralized authentication (it&amp;rsquo;s easy to painlessly revoke them). So, what&amp;rsquo;s the next step? And more exactly, why would one need something even better?
+The main problem with SSH keys is that they&amp;rsquo;re not magic: they consist of a key pair, of which the private key is stored on your disk.</description>
+    </item>
+    
     <item>
       <title>Docker &amp; OCI: a humble hardening guide</title>
       <link>https://wonderfall.dev/docker-hardening/</link>
