@@ -36,13 +36,17 @@ ssh-keygen -t ed25519-sk
 
 This will generate a `id_ed25519_sk` private key and a `id_ed25519_sk.pub` public key in `.ssh`. These are defaults, but you can change them if you want. We will call this key pair a "handle", because they're not sufficient by themselves to derive the real secret (as you guessed it, the FIDO2 token is needed). `ssh-keygen` should ask you to touch the key, and enter the PIN prior to that if you did set one (you probably should).
 
-You can also generate a **resident key**:
+You can also generate a **resident key** (referred to as *discoverable credential* in the WebAuthn specification):
 
 ```
 ssh-keygen -t ed25519-sk -O resident -O application=ssh:user1
 ```
 
-`-O resident` will tell `ssh-keygen` to generate a resident key, meaning that the private "handle" key will also be stored on the security key itself. This has security implications, but you may want that to move seamlessly between different computers. In that case, you should absolutely protect your key with a PIN beforehand. `-O application=ssh:` is necessary to instruct that the resident key will use a particular slot, because the security key will have to index the resident keys (by default, they use `ssh:` with an empty user ID). If this is not specificed, the next key generation might overwrite the previous one.
+As you can see, a few options must be specified:
+
+- `-O resident` will tell `ssh-keygen` to generate a resident key, meaning that the private "handle" key will also be stored on the security key itself. This has security implications, but you may want that to move seamlessly between different computers. In that case, you should absolutely protect your key with a PIN beforehand.
+- `-O application=ssh:` is necessary to instruct that the resident key will use a particular slot, because the security key will have to index the resident keys (by default, they use `ssh:` with an empty user ID). If this is not specificed, the next key generation might overwrite the previous one.
+- `-O verify-required` is optional but instructs that a PIN is required to generate/access the key.
 
 Resident keys can be retrieved using `ssh-keygen -K` or `ssh-add -K` if you don't want to write them to the disk.
 
@@ -65,3 +69,5 @@ Restart the `sshd` service and try to connect to your server using your key hand
 
 ## That's cool, right?
 If you don't have a security key, you can buy one from [YubiKey](https://www.yubico.com/fr/store/) (I'm very happy with my 5C NFC by the way), [Nitrokey](https://www.nitrokey.com/), [SoloKeys](https://solokeys.com/) or [OnlyKey](https://onlykey.io/) (to name a few). If you have an Android device with a hardware security module (HSM), such as the Google Pixels equipped with Titan M (Pixel 3+), you could even use them as bluetooth security keys.
+
+*No reason to miss out on the party if you can afford it!*
