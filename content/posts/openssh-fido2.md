@@ -25,7 +25,7 @@ Another layer of defense would obviously be multi-factor authentification, or th
 
 Fortunately for us, [OpenSSH 8.2](https://www.openssh.com/txt/release-8.2) (released in February 2020) introduced native support for FIDO2/U2F. Most OpenSSH distributions should have the middleware set to use the `libfido2` library, including portable versions such as the one [for Win32](https://github.com/PowerShell/Win32-OpenSSH).
 
-Basically, `ssh-keygen -t ${key_type}-sk` will generate for us a token-backed key pair. The key types that are supported depend on your security key. Newer models support should support both ECDSA-P256 (`ecdsa-sk`) and Ed25519 (`ed25519-sk`). If the latter is available, you should prefer it.
+Basically, `ssh-keygen -t ${key_type}-sk` will generate for us a token-backed key pair. The key types that are supported depend on your security key. Newer models should support both ECDSA-P256 (`ecdsa-sk`) and Ed25519 (`ed25519-sk`). If the latter is available, you should prefer it.
 
 ### Client configuration
 To get started:
