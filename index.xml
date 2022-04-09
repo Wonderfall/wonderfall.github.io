@@ -13,7 +13,7 @@
       <pubDate>Sat, 09 Apr 2022 17:43:12 +0000</pubDate>
       
       <guid>https://wonderfall.dev/openssh-fido2/</guid>
-      <description>Passwordless authentication with OpenSSH keys has been the de facto security standard for years. SSH keys are more robust since they&amp;rsquo;re cryptographically sane by default, and are therefore resilient to most bruteforce atacks. They&amp;rsquo;re also easier to manage while enabling a form of decentralized authentication (it&amp;rsquo;s easy to painlessly revoke them). So, what&amp;rsquo;s the next step? And more exactly, why would one need something even better?
+      <description>Passwordless authentication with OpenSSH keys has been the de facto security standard for years. SSH keys are more robust since they&amp;rsquo;re cryptographically sane by default, and are therefore resilient to most bruteforce atacks. They&amp;rsquo;re also easier to manage while enabling a form of decentralized authentication (it&amp;rsquo;s easy and painless to revoke them). So, what&amp;rsquo;s the next step? And more exactly, why would one need something even better?
 The main problem with SSH keys is that they&amp;rsquo;re not magic: they consist of a key pair, of which the private key is stored on your disk.</description>
     </item>
     
