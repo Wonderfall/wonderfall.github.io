@@ -164,7 +164,7 @@ Also, as written above: the OS pins the app signature (for all profiles) upon in
 
 For most people, I'd recommend just using **Play Store for top-notch security** as it does additional checks. Play Store isn't quite flawless, but emphasises the adoption of modern security standards which in turn encourages better privacy practices; as strange as it may sound, Google is not always doing bad things in that regard.
 
-*Note: this article obviously can't address all the flaws related to Play Store itself. Again, the main topic of this article is about F-Droid and should not be seen as an exhaustive comparaison between different app repositories.*
+*Note: this article obviously can't address all the flaws related to Play Store itself. Again, the main topic of this article is about F-Droid and should not be seen as an exhaustive comparison between different app repositories.*
 
 > Should I really care?
 
