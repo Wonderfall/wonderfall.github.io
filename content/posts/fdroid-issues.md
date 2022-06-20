@@ -1,5 +1,5 @@
 ---
-title: "F-Droid: how is it weakening the Android security model?"
+title: "A brief and informal analysis of F-Droid security"
 date: 2022-01-02T21:28:31Z
 draft: false
 tags: ['security', 'android']
