@@ -33,7 +33,7 @@ F-Droid requires that the source code of the app is exempt from any proprietary 
 
 *A tempting idea would be to compare F-Droid to the desktop Linux model where users trust their distribution maintainers out-of-the-box (this can be sane if you're already trusting the OS anyway), but the desktop platform is intrinsically chaotic and heterogeneous for better and for worse. It really shouldn't be compared to the Android platform in any way.*
 
-While we'ven seen that F-Droid controls the signing servers (much like Play App Signing), F-Droid also fully controls the build servers that run the disposable VMs used for building apps. And [as of July 2022](https://gitlab.com/groups/fdroid/-/milestones/5#tab-issues), their guest VM image officially runs a version of Debian which reached EOL. Undoubtedly, this raises questions about their whole infrastructure security.
+While we've seen that F-Droid controls the signing servers (much like Play App Signing), F-Droid also fully controls the build servers that run the disposable VMs used for building apps. And [as of July 2022](https://gitlab.com/groups/fdroid/-/milestones/5#tab-issues), their guest VM image officially runs a version of Debian which reached EOL. Undoubtedly, this raises questions about their whole infrastructure security.
 
 > How can you be sure that the app repository can be held to account for the code it delivers?
 
