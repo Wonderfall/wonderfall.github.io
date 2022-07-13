@@ -180,6 +180,10 @@ For most people, I'd recommend just **sticking with Play Store**. Play Store isn
 
 As explained above, it doesn't matter as you shouldn't really rely on any quality control to be the sole guarantee that a software is free of malicious or exploitable code. Play Store and even the Apple App Store may have a considerable amount of malware because a full reverse-engineering of any uploaded app isn't feasible realistically. However, they fulfill their role quite well, and that is all that is expected of them.
 
+> With Play App Signing being effectively enforced for new apps, isn't Play Store as "flawed" as F-Droid?
+
+I've seen this comment repeatedly, and it would be dismissing all the other points made in this article. Also, I strongly suggest that you carefully read the sections related to Play App Signing, and preferably the official documentation on this matter. It's not a black and white question and there are many more nuances to it.
+
 > Aren't open-source apps more secure? Doesn't it make F-Droid safer?
 
 You can still find and get your open-source apps elsewhere. And no, open-source apps [aren't necessarily more private or secure](https://seirdy.one/2022/02/02/floss-security.html). Instead, you should rely on the strong security and privacy guarantees provided by a modern operating system with **a robust sandboxing/permission model**, namely modern Android, GrapheneOS and iOS. Pay close attention to the permissions you grant, and avoid legacy apps as they could require invasive permissions to run.
