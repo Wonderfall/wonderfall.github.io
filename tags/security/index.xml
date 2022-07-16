@@ -18,7 +18,7 @@ Why? The main problem with SSH keys is that they&amp;rsquo;re not magic: they co
     </item>
     
     <item>
-      <title>Docker &amp; OCI: a humble hardening guide</title>
+      <title>Docker and OCI: a humble hardening guide</title>
       <link>https://wonderfall.dev/docker-hardening/</link>
       <pubDate>Wed, 30 Mar 2022 21:23:12 +0000</pubDate>
       
