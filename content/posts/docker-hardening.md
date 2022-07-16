@@ -1,5 +1,5 @@
 ---
-title: "Docker & OCI: a humble hardening guide"
+title: "Docker and OCI: a humble hardening guide"
 date: 2022-03-30T21:23:12Z
 draft: false
 tags: ['security', 'container', 'linux']
