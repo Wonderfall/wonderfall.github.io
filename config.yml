@@ -1,7 +1,7 @@
 baseURL: "https://wonderfall.dev/"
 languageCode: en-us
 title: "Wonder's Lab"
-theme: PaperMod
+theme: WonderMod
 
 enableRobotsTXT: true
 buildDrafts: false
