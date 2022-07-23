@@ -5,6 +5,7 @@
     <link>https://wonderfall.dev/categories/</link>
     <description>Recent content in Categories on Wonder&#39;s Lab</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://wonderfall.dev/categories/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <copyright>[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</copyright><atom:link href="https://wonderfall.dev/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
