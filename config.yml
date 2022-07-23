@@ -69,6 +69,13 @@ params:
     Text: "Source code" # edit text
     appendFilePath: true # to append file path to Edit link
 
+markup:
+    highlight:
+        style: dracula
+        lineNos: true
+        noClasses: false
+        guessSyntax: true
+
 menu:
   main:
     - identifier: tags
