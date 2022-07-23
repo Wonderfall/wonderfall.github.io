@@ -1,0 +1,7 @@
+# Ignore .DS_Store files (macOS)
+.DS_Store
+
+# Ignore Hugo generated files
+public/
+resources/
+.hugo_build.lock
