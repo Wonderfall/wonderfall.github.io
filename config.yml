@@ -23,15 +23,15 @@ params:
   author: Wonderfall
   DateFormat: "January 2, 2006"
   defaultTheme: dark # dark, light
-  disableThemeToggle: true
+  disableThemeToggle: false
 
   ShowReadingTime: true
   ShowShareButtons: false
   ShowPostNavLinks: true
   ShowBreadCrumbs: true
-  ShowCodeCopyButtons: false
+  ShowCodeCopyButtons: true
   disableSpecial1stPost: false
-  disableScrollToTop: true
+  disableScrollToTop: false
   comments: false
   hidemeta: false
   hideSummary: false
@@ -39,7 +39,7 @@ params:
   tocopen: false
 
   assets:
-    disableHLJS: true
+    disableHLJS: false
     disableFingerprinting: true
 
   homeInfoParams:
