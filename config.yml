@@ -2,6 +2,7 @@ baseURL: "https://wonderfall.dev/"
 languageCode: en-us
 title: "Wonder's Lab"
 theme: WonderMod
+copyright: '[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)'
 
 enableRobotsTXT: true
 buildDrafts: false
