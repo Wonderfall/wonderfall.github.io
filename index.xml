@@ -48,7 +48,7 @@ The main goal of this write-up was to inform users so they can make responsible 
       
       <guid>https://wonderfall.dev/about/</guid>
       <description>You may call me &amp;ldquo;Wonderfall&amp;rdquo;. I was young and it sounded cool.
-$ whoami I&amp;#39;m just a random guy passing by on the Internet who is interested in all kinds of things. And as you can tell, I&amp;#39;m a nerd. $ ls -l content/ technology security privacy rants photography pharmacology medicine science $ git config --get remote.origin.url https://github.com/Wonderfall/wonderfall.github.io </description>
+1 2 3 $ whoami I&amp;#39;m just a random guy passing by on the Internet who is interested in all kinds of things. And as you can tell, I&amp;#39;m a nerd. 1 2 3 4 5 6 7 8 9 $ ls -l content/ technology security privacy rants photography pharmacology medicine science 1 2 $ git config --get remote.</description>
     </item>
     
   </channel>
