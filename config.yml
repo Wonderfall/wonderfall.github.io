@@ -40,7 +40,7 @@ params:
   tocopen: false
 
   assets:
-    disableHLJS: false
+    disableHLJS: true
     disableFingerprinting: true
 
   homeInfoParams:
@@ -72,7 +72,7 @@ params:
 markup:
     highlight:
         style: dracula
-        lineNos: true
+        lineNos: false
         noClasses: false
         guessSyntax: true
 
