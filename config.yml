@@ -42,7 +42,7 @@ params:
 
   assets:
     disableHLJS: true
-    disableFingerprinting: true
+    disableFingerprinting: false
 
   homeInfoParams:
     Title: "Hi there. I'm a bug on the Internet."
